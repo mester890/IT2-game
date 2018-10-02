@@ -3,16 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Gruppeoppgave</title>
-
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
     </head>
   <body>
-
-    <div id="output">
-      <h2>Velkomment til spillet!</h2>
-      <h5>Klikk på knappen for å gå videre...</h5>
-      <button type="button" name="button" onclick="startGame();">Start spillet</button>
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+          <div id="output">
+            <h2 class="text-center">Velkomment til spillet!</h2>
+            <h5 class="text-center">Klikk på knappen for å gå videre...</h5>
+            <br>
+            <button type="button" class="btn btn-block btn-warning" onclick="startGame();">Start spillet</button>
+          </div>
+        </div>
+        <div class="col-3">
+        </div>
+      </div>
     </div>
-
 
    <script src="js/main.js" charset="utf-8"></script>
   </body>
