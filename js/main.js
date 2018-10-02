@@ -1,10 +1,20 @@
 const output = document.body.querySelector('#output');
 const scoreboard_output = document.body.querySelector('#scoreboard');
-var scoreboard;
+var scoreboard = new Scoreboard();
 
 function Scoreboard() {
+  this.title = "";
+  this.stages = [];
+  this.setTitle = function(src_name) {
+    this.title = src_name;
+  }
   this.update = function(stage, status) {
-
+    var stg = {stage, status}
+    this.stages.push(stg);
+    scoreboard_output.innerHTML = "";
+    for (stage of this.stages) {
+      scoreboard_output.innerHTML += `${stage.stage} = ${stage.status} <br>`
+    }
   }
 }
 
@@ -27,17 +37,22 @@ function stageOne(choice) {
       <label for"player_name">Skriv inn navn:</label>
       <input class="form-control" name="player_name" id="player_name">
     </p>
-    <button class="btn btn-block btn-light" onclick="setScoreboardName(player_naming.player_name.value)">Gå videre</button>
+    <button class="btn btn-block btn-light" id="player_name_btn">Gå videre</button>
     </form>
     `;
-
+    document.getElementById("player_name_btn").addEventListener("click", function(event){
+      event.preventDefault()
+      setScoreboardTitle(player_naming.player_name.value);
+    });
   } else if (choice == 'no') {
     endGame('Du hadde ikke det som skulle til for å gå videre i spillet. Da avslutter vi med en gang...');
   }
+
 }
 
-function setScoreboardName(player_name) {
-  scoreboard = new Scoreboard(player_name);
+function setScoreboardTitle(title) {
+  scoreboard.setTitle(title);
+  scoreboard.update('Valgt navn', '1');
 }
 
 
