@@ -5,8 +5,8 @@ function startGame() {
   <p>
     Du er strandet på en øde øy. Du må ta de riktige valgene for å komme deg til spillets ende. Greier du utfordringen?
   </p>
-  <button type="button" name="button" onclick="stageOne('yes');">Ja!</button>
-  <button type="button" name="button" onclick="stageOne('no');">Nei</button>
+  <button type="button" class="btn btn-light" onclick="stageOne('yes');">Ja!</button>
+  <button type="button" class="btn btn-light" onclick="stageOne('no');">Nei</button>
   `;
 
 }
@@ -18,6 +18,11 @@ function stageOne(choice) {
     endGame('Du hadde ikke det som skulle til for å gå videre i spillet. Da avslutter vi med en gang...');
   }
 }
+
+
+
+
+
 
 function endGame(reason) {
   output.innerHTML = `
