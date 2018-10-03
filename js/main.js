@@ -94,13 +94,32 @@ function pathOne(choice) {
     <button class="btn btn-block btn-light" onclick="pathOne1()">Gå til hulen</button>
     <button class="btn btn-block btn-light" onclick="pathOne2()">Gå lengre inn i jungelen</button>
     `
+  } else if (choice == 'havet') {
+    scoreboard.update('Går til ' + choice, '1');
+    output.innerHTML = `
+    <p>
+      Du går inn i jungelen, og går i en ganske lang stund. Du klarer ikke finne veien tilbake. Du finner en hule. Hva gjør du?
+    </p>
+    <button class="btn btn-block btn-light" onclick="pathOne1()">Gå til hulen</button>
+    <button class="btn btn-block btn-light" onclick="pathOne2()">Gå lengre inn i jungelen</button>
+    `
+  } else if (choice == 'stranden') {
+    scoreboard.update('Går til ' + choice, '1');
+    output.innerHTML = `
+    <p>
+      Du går inn i jungelen, og går i en ganske lang stund. Du klarer ikke finne veien tilbake. Du finner en hule. Hva gjør du?
+    </p>
+    <button class="btn btn-block btn-light" onclick="pathOne1()">Gå til hulen</button>
+    <button class="btn btn-block btn-light" onclick="pathOne2()">Gå lengre inn i jungelen</button>
+    `
   }
 }
+
 function pathOne1() {
   scoreboard.update('Går til hulen', '1');
   output.innerHTML = `
   <p>
-    Du går til hulen. Den er bekkmørk og du kan ikke se noe lengre enn fem meter ned i hulen ifra åpningen. Du hører ikke noe som kommer ifra hulen. Hva gjør du?
+    Du går til hulen. Den er bekmørk og du kan ikke se noe lengre enn fem meter ned i hulen ifra åpningen. Du hører ikke noe som kommer ifra hulen. Hva gjør du?
   </p>
   <button class="btn btn-block btn-light" onclick="pathOne3()">Gå inn i hulen</button>
   <button class="btn btn-block btn-light" onclick="pathOne4()">Lag en fakkel, og gå inn i hulen</button>
@@ -122,12 +141,19 @@ function pathOne4() {
   scoreboard.update('Lager en fakkel og går inn i hulen', '1');
   output.innerHTML = `
   <p>
-    Du går in i hulen med en fakkel. Fakkelen lyser opp hulen godt og du kan se at du er i et stort hulerom. Du ser en foss, og i fossen sitter det en skarpmetalstav fast. Du kan ta den om du strekker deg etter den. Hva gjør du?
+    Du går inn i hulen med en fakkel. Fakkelen lyser opp hulen godt og du kan se at du er i et stort hulerom. Du ser en foss, og i fossen sitter det en skarpmetalstav fast. Du kan ta den om du strekker deg etter den. Hva gjør du?
   </p>
   <button class="btn btn-block btn-light" onclick="pathOne5('stav', 'true')">Ta staven</button>
   <button class="btn btn-block btn-light" onclick="pathOne5('stav', 'false')">Ikke ta staven</button>
   <button class="btn btn-block btn-light" onclick="pathOne6()">Gå videre innover hulen</button>
   `
+}
+function pathOne5(key, val) {
+  if (key == 'stav' && val == 'true') {
+
+  } else if (key == 'stav' && val == 'false') {
+    
+  }
 }
 
 
