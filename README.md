@@ -25,18 +25,18 @@
           [] Gå til hulen -> pathOne1
           [x] Gå lengre in i jungelen -> pathOne2 -> pathGameEnd (X)
 
-      [] pathOne2 # #charNavn# går lengre in i jungelen. Det blir sakte mørkere og kaldere. Tilslutt kan du ikke se eller finne veien tilbake. Noen glimt i buskene viser seg igjennom bladene. Flere par av de dukker opp. En pakke med løver hopper ut på deg og spiser deg.
+      [x] pathOne2 # #charNavn# går lengre in i jungelen. Det blir sakte mørkere og kaldere. Tilslutt kan du ikke se eller finne veien tilbake. Noen glimt i buskene viser seg igjennom bladene. Flere par av de dukker opp. En pakke med løver hopper ut på deg og spiser deg.
           [] defaultTo -> pathGameEnd
 
-      [] pathOne1 # Du går til hulen. Den er bekkmørk og du kan ikke se noe lengre enn fem meter ned i hulen ifra åpningen. Du hører ikke noe som kommer ifra hulen. Hva gjør du?
-          [] Gå inn i hulen -> pathOne3 -> pathGameEnd (X)
-          [] Lag en fakkel, og gå inn i hulen -> pathOne4
-          [] Gå tilbake mot jungelen -> pathOne
+      [x] pathOne1 # Du går til hulen. Den er bekkmørk og du kan ikke se noe lengre enn fem meter ned i hulen ifra åpningen. Du hører ikke noe som kommer ifra hulen. Hva gjør du?
+          [x] Gå inn i hulen -> pathOne3 -> pathGameEnd (X)
+          [x] Lag en fakkel, og gå inn i hulen -> pathOne4
+          [x] Gå tilbake mot jungelen -> pathOne
 
-      [] pathOne3 # Du går in i hulen. Hulen er veldig mørk, og du kan ikke se noe i hulen. Du hører drypping og drummingen av en foss. Plutselig snubbler du og faller. Men du stopper ikke opp. #charNavn# falt ned en klippe.
-          [] defaultTo -> pathGameEnd
+      [x] pathOne3 # Du går in i hulen. Hulen er veldig mørk, og du kan ikke se noe i hulen. Du hører drypping og drummingen av en foss. Plutselig snubbler du og faller. Men du stopper ikke opp. #charNavn# falt ned en klippe.
+          [x] defaultTo -> pathGameEnd
 
-      [] pathOne4 # Du går in i hulen med en fakkel. Fakkelen lyser opp hulen godt og du kan se at du er i et stort hulerom. Du ser en foss, og i fossen sitter det en skarp metal stav fast. Du kan ta den om du strekker deg etter den. Hva gjør du?
+      [x] pathOne4 # Du går in i hulen med en fakkel. Fakkelen lyser opp hulen godt og du kan se at du er i et stort hulerom. Du ser en foss, og i fossen sitter det en skarp metal stav fast. Du kan ta den om du strekker deg etter den. Hva gjør du?
           [] Ta staven -> setFlag: TattStav = true; + pathOne5
           [] Ikke ta staven -> pathOne5
           [] Gå videre innover hulen -> pathOne6
