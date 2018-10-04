@@ -1,10 +1,9 @@
 # IT2-game
 # Situasjonsmal
-`
     [] alt1 -> effekt1
     [] alt2 -> effekt2
     [] alt3 -> effekt3
-`
+
 # pathGameEnd #
 `Au da! Din karakter #charNavn# døde! Vil du prøve på nytt?`
     [] Ja! -> gameStart
