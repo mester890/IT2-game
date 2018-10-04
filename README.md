@@ -1,20 +1,20 @@
-# IT2-game
+# IT2-game #
 
-# stage3 (start)
+# stage3 (start) #
 
-# mal
+# mal #
 
-# [] situasjon
+# [] situasjon #
     [] alt1 -> effekt1
     [] alt2 -> effekt2
-    [] alt3 -> effekt3#
+    [] alt3 -> effekt3
 
-# pathGameEnd
+# pathGameEnd #
 `Au da! Din karakter #charNavn# døde! Vil du prøve på nytt?`
     [] Ja! -> gameStart
     [] Nei. -> gameMenu (Leder tilbake til startsiden)
 
-# script
+# script #
 
   [x] #charNavn# sitter fast på øya. Det er hav rundt øya, og en strand og en jungel på øya. Hvor vil du gå? (no return + startpunkt)
       [x] Gå in i jungelen -> pathOne
@@ -52,6 +52,15 @@
         
         [] pathOne7 # #if flag:"gikkStille" = true then Write('Du stikker opp hodet sakte igjennom åpningen, og ser deg om. Rundt 10 meter unna ligger en løve og sover. Hva gjør du?')#
             #if flag:"TattStav" = true then show button; [] Snik opp og drep løven -> pathOne9 -> pathGameEnd (X)
-            [] Snik deg bort ifra løven
+            [] Snik deg bort ifra løven -> pathOne10
             
             #if flag:"gikkStille" = false then -> pathGameEnd and Write('Du går opp igjennom åpningen. Når du kommer opp sitter en løve og sover. Løven våkner, og begynner å jage deg. Du blir overrasket og faller baklengs nedover hule åpningen. #charNavn# faller ned til sin død.') -> defaultTo -> pathGameEnd
+            
+        [] pathOne9 # Du sniker deg opp på løven, og sikter staven du plukket opp i hulen mot brystkassen av løven. Du tar i alt du kan, og stikker løven i brystet. Staven går igjennom huden på løven, men treffer bein. Løven våkner og slår deg med sin pote i ansiktet. #charNavn# slåes bevistløs, og blir senere drept. -> pathGameEnd
+        
+        [] pathOne8 # Du kaster opp fakkelen så hardt du kan. Den flyver opp mot utgangen, og kort etter kunne du høre et dunk. Etterhvert hører du brøling og knistring av ild. Du går opp utgangen etter en stund forsiktig og ser at jungelen brenner. Du traff en løve som begynte å brenne. Løven løp in i skogen og tente på resten. Hva gjør du?
+            [] Løp vekk ifra brannen
+            [] Hopp tilbake in i hulen
+            [] Prøv lykken og løp in i den brennende skogen!
+        
+        [] pathOne10 # Du sniker deg bort ifra løven, og går igjennom jungelen igjen. Du klarer å komme ut av jungelen, og lander på stranden.
