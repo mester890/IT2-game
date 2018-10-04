@@ -5,6 +5,7 @@ var scoreboard = new Scoreboard();
 function Scoreboard() {
   this.name = "";
   this.stages = [];
+  this.hasStav = false;
 
   this.setTitle = function(src_name) {
     this.name = src_name;
@@ -150,12 +151,24 @@ function pathOne4() {
 }
 function pathOne5(key, val) {
   if (key == 'stav' && val == 'true') {
-
+    scoreboard.update('Du bestemmer deg for å ta staven', '1');
+    scoreboard.hasStav = true;
   } else if (key == 'stav' && val == 'false') {
-    
+    scoreboard.update('Du bestemmer deg for å ikke ta staven', '1');
   }
+  stageOne6();
 }
 
+function stageOne6() {
+  output.innerHTML = `
+  <p>
+  Du går videre in i hulen. Du går en stund som virker en evighet. Forbi farlige klipper og skarpe steiner. Tilslutt kommer du frem til en åpning i hulen. Den slipper in lys, og du kan gå ut av hulen. Du vet ikke hva som er der oppe, men du kan ikke høre eller se noe som kan være truseler. Hva gjør du?
+  </p>
+  <button class="btn btn-block btn-light" onclick="pathOne7('gikkStille', 'true')">Gå stille opp utgangen</button>
+  <button class="btn btn-block btn-light" onclick="pathOne7('gikkStille', 'false')">Gå opp utgangen</button>
+  <button class="btn btn-block btn-light" onclick="pathOne8()">Kast opp fakkelen for å se om noe gjemmer seg der oppe</button>
+  `
+}
 
 function endGame(reason) {
   output.innerHTML = `

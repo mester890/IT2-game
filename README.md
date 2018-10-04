@@ -40,15 +40,16 @@
           [] Ta staven -> setFlag: TattStav = true; + pathOne5
           [] Ikke ta staven -> pathOne5 -> pathOne6
           [] Gå videre innover hulen -> pathOne6
-        
+
         (#TattStav.Value = True = Write('ta staven.')#; #TattStav.Value = false = Write('ikke ta staven.')#;)
         [] pathOne5 # Du bestemmer deg for å #TattStav.Value# Du går så lengere inn i hulen
             [] defaultTo -> pathOne6
-        
+
         [] pathOne6 # Du går videre in i hulen. Du går en stund som virker en evighet. Forbi farlige klipper og skarpe steiner. Tilslutt kommer du frem til en åpning i hulen. Den slipper in lys, og du kan gå ut av hulen. Du vet ikke hva som er der oppe, men du kan ikke høre eller se noe som kan være truseler. Hva gjør du?
             [] Gå stille opp utgangen -> setFlag: gikkStille = true -> pathOne7
             [] Gå opp utgangen -> pathOne7 (#if flag:"gikkStille" = false then -> pathGameEnd)
             [] Kast opp fakkelen for å se om noe gjemmer seg der oppe. -> pathOne8
+
         
         [] pathOne7 # #if flag:"gikkStille" = true then Write('Du stikker opp hodet sakte igjennom åpningen, og ser deg om. Rundt 10 meter unna ligger en løve og sover. Hva gjør du?')#
             #if flag:"TattStav" = true then show button; [] Snik opp og drep løven -> pathOne9 -> pathGameEnd (X)
