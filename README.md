@@ -60,8 +60,12 @@
         [] pathOne9 # Du sniker deg opp på løven, og sikter staven du plukket opp i hulen mot brystkassen av løven. Du tar i alt du kan, og stikker løven i brystet. Staven går igjennom huden på løven, men treffer bein. Løven våkner og slår deg med sin pote i ansiktet. #charNavn# slåes bevistløs, og blir senere drept. -> pathGameEnd
         
         [] pathOne8 # Du kaster opp fakkelen så hardt du kan. Den flyver opp mot utgangen, og kort etter kunne du høre et dunk. Etterhvert hører du brøling og knistring av ild. Du går opp utgangen etter en stund forsiktig og ser at jungelen brenner. Du traff en løve som begynte å brenne. Løven løp in i skogen og tente på resten. Hva gjør du?
-            [] Løp vekk ifra brannen
-            [] Hopp tilbake in i hulen
-            [] Prøv lykken og løp in i den brennende skogen!
+            [] Løp vekk ifra brannen -> pathOne11 -> pathGameEnd
+            [] Hopp tilbake in i hulen -> pathOne12 -> pathGameEnd
+            [] Prøv lykken og løp in i den brennende skogen! -> pathOne10
         
-        [] pathOne10 # Du sniker deg bort ifra løven, og går igjennom jungelen igjen. Du klarer å komme ut av jungelen, og lander på stranden.
+        [] pathOne10 # Du løper igjennom den brennende jungelen. Igjennom røyk, aske og ild løper du. Du klarer å komme ut av jungelen, og lander på stranden. Øyen brenner i sitt fulle. Siden du er på stranden er du sikker ifra ilden. På horisonten ser du et paserende fly! Flyet er av en havtype, og kan lande på vannet. Den ser den brennende øya, og lander i nærheten. Manskapet åpner cockpiten, og ser deg. #charNavn# er blitt reddet! -> defaultTo -> pathGameWin
+        
+        [] pathOne11 # Du prøver å løpe ifra brannen, men løven som ble tent ild på har tent ild på jungelen rundt deg. Før du vet det havner du i en sky av røyk og aske. #charNavn# prøver å vandre igjennom røyken og komme seg til sikkerhet. #charNavn# svimer, og kveles etter en stund. -> defaultTo -> pathGameEnd
+        
+        [] pathOne12 # Du hopper tilbake in i hulen, og prøver å gjemme deg ifra brannen. For en stund funker dette, og du klarer å skjerme deg ifra både ilden og røyken. Brannen hadde gjort trærne svakere, derimot og noen av de falt over åpningen av hulen. Du har ikke styrken til å fjerne de, og du er innestengt. #charNavn# sulter eventuelt ihjel. -> defaultTo -> pathGameEnd
