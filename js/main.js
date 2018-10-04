@@ -6,6 +6,7 @@ function Scoreboard() {
   this.name = "";
   this.stages = [];
   this.hasStav = false;
+  this.gikkStille = false;
 
   this.setTitle = function(src_name) {
     this.name = src_name;
@@ -169,6 +170,31 @@ function stageOne6() {
   <button class="btn btn-block btn-light" onclick="pathOne8()">Kast opp fakkelen for å se om noe gjemmer seg der oppe</button>
   `
 }
+function pathOne7(key, val) {
+  if (key == 'gikkStille' && val == 'true') {
+    scoreboard.update('Du går stille opp utgangen', '1');
+    scoreboard.gikkStille = true;
+    output.innerHTML = `
+    <p>
+      Du stikker opp hodet sakte igjennom åpningen, og ser deg om. Rundt 10 meter unna ligger en løve og sover. Hva gjør du?
+    <p>
+    <p id='innerOutput'></p>
+    `;
+    var innerOutput = document.body.querySelector('#innerOutput');
+    if (scoreboard.hasStav == true) {
+      innerOutput.innerHTML = `
+        <button class="btn btn-block btn-light" onclick="endGameReason('loss', 'Du sniker deg opp på løven, og sikter staven du plukket opp i hulen mot brystkassen av løven. Du tar i alt du kan, og stikker løven i brystet. Staven går igjennom huden på løven, men treffer bein. Løven våkner og slår deg med sin pote i ansiktet. ' + scoreboard.name + ' slåes bevistløs, og blir senere drept.', 'ble drept av løven')">Snik opp og drep løven</button>
+      `;
+    } else if (scoreboard.gikkStille == false) {
+      innerOutput.innerHTML = `
+        <button class="btn btn-block btn-light" onclick="pathOne10()">Snik deg bort fra løven</button>
+      `;
+    }
+  } else if (key == 'gikkStille' && val == 'false') {
+    scoreboard.update('Du rabler ivei opp utgangen', '1');
+    endGame('Du går opp igjennom åpningen. Når du kommer opp sitter en løve og sover. Løven våkner, og begynner å jage deg. Du blir overrasket og faller baklengs nedover huleåpningen. ' + scoreboard.name + ' faller ned til sin død.');
+  }
+}
 
 function endGame(reason) {
   output.innerHTML = `
@@ -177,4 +203,24 @@ function endGame(reason) {
     <p class="text-center text-muted">Prøve igjen?</p>
     <button type="button" class="btn btn-block btn-warning" onclick="startGame('Som du sikkert vet...  ')">Ja!</button>
   `
+}
+function endGameReason(type, text, scoreboardText) {
+  if(type == 'win') {
+    scoreboard.update(`Du ${scoreboardText}, og vinner derfor denne runden.`);
+    output.innerHTML = `
+      <h2 class="text-center" >Gratulerer!</h2>
+      <p>${text}</p>
+      <button type="button" class="btn btn-block btn-warning" onclick="startGame('Greier du det i gjen? ')">Rematch</button>
+    `;
+  }
+  if(type == 'loss') {
+    scoreboard.update(`Du blir ${scoreboardText}, og taper derfor denne runden.`);
+    output.innerHTML = `
+      <h2 class="text-center" >Dessverre!</h2>
+      <p>${text}</p>
+      <p class="text-center text-muted">Prøve igjen?</p>
+      <button type="button" class="btn btn-block btn-warning" onclick="startGame('Som du sikkert vet...  ')">Ja!</button>
+    `
+  }
+
 }

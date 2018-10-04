@@ -1,14 +1,10 @@
-# IT2-game #
-
-# stage3 (start) #
-
-# mal #
-
-# [] situasjon #
+# IT2-game
+# Situasjonsmal
+`
     [] alt1 -> effekt1
     [] alt2 -> effekt2
     [] alt3 -> effekt3
-
+`
 # pathGameEnd #
 `Au da! Din karakter #charNavn# døde! Vil du prøve på nytt?`
     [] Ja! -> gameStart
@@ -50,22 +46,22 @@
             [] Gå opp utgangen -> pathOne7 (#if flag:"gikkStille" = false then -> pathGameEnd)
             [] Kast opp fakkelen for å se om noe gjemmer seg der oppe. -> pathOne8
 
-        
+
         [] pathOne7 # #if flag:"gikkStille" = true then Write('Du stikker opp hodet sakte igjennom åpningen, og ser deg om. Rundt 10 meter unna ligger en løve og sover. Hva gjør du?')#
             #if flag:"TattStav" = true then show button; [] Snik opp og drep løven -> pathOne9 -> pathGameEnd (X)
             [] Snik deg bort ifra løven -> pathOne10
-            
+
             #if flag:"gikkStille" = false then -> pathGameEnd and Write('Du går opp igjennom åpningen. Når du kommer opp sitter en løve og sover. Løven våkner, og begynner å jage deg. Du blir overrasket og faller baklengs nedover hule åpningen. #charNavn# faller ned til sin død.') -> defaultTo -> pathGameEnd
-            
+
         [] pathOne9 # Du sniker deg opp på løven, og sikter staven du plukket opp i hulen mot brystkassen av løven. Du tar i alt du kan, og stikker løven i brystet. Staven går igjennom huden på løven, men treffer bein. Løven våkner og slår deg med sin pote i ansiktet. #charNavn# slåes bevistløs, og blir senere drept. -> pathGameEnd
-        
+
         [] pathOne8 # Du kaster opp fakkelen så hardt du kan. Den flyver opp mot utgangen, og kort etter kunne du høre et dunk. Etterhvert hører du brøling og knistring av ild. Du går opp utgangen etter en stund forsiktig og ser at jungelen brenner. Du traff en løve som begynte å brenne. Løven løp in i skogen og tente på resten. Hva gjør du?
             [] Løp vekk ifra brannen -> pathOne11 -> pathGameEnd
             [] Hopp tilbake in i hulen -> pathOne12 -> pathGameEnd
             [] Prøv lykken og løp in i den brennende skogen! -> pathOne10
-        
+
         [] pathOne10 # Du løper igjennom den brennende jungelen. Igjennom røyk, aske og ild løper du. Du klarer å komme ut av jungelen, og lander på stranden. Øyen brenner i sitt fulle. Siden du er på stranden er du sikker ifra ilden. På horisonten ser du et paserende fly! Flyet er av en havtype, og kan lande på vannet. Den ser den brennende øya, og lander i nærheten. Manskapet åpner cockpiten, og ser deg. #charNavn# er blitt reddet! -> defaultTo -> pathGameWin
-        
+
         [] pathOne11 # Du prøver å løpe ifra brannen, men løven som ble tent ild på har tent ild på jungelen rundt deg. Før du vet det havner du i en sky av røyk og aske. #charNavn# prøver å vandre igjennom røyken og komme seg til sikkerhet. #charNavn# svimer, og kveles etter en stund. -> defaultTo -> pathGameEnd
-        
+
         [] pathOne12 # Du hopper tilbake in i hulen, og prøver å gjemme deg ifra brannen. For en stund funker dette, og du klarer å skjerme deg ifra både ilden og røyken. Brannen hadde gjort trærne svakere, derimot og noen av de falt over åpningen av hulen. Du har ikke styrken til å fjerne de, og du er innestengt. #charNavn# sulter eventuelt ihjel. -> defaultTo -> pathGameEnd
