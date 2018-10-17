@@ -180,20 +180,21 @@ function pathOne7(key, val) {
     <p>
     <p id='innerOutput'></p>
     `;
-    var innerOutput = document.body.querySelector('#innerOutput');
-    if (scoreboard.hasStav == true) {
-      innerOutput.innerHTML = `
-        <button class="btn btn-block btn-light" onclick="endGameReason('loss', 'Du sniker deg opp på løven, og sikter staven du plukket opp i hulen mot brystkassen av løven. Du tar i alt du kan, og stikker løven i brystet. Staven går igjennom huden på løven, men treffer bein. Løven våkner og slår deg med sin pote i ansiktet. ' + scoreboard.name + ' slåes bevistløs, og blir senere drept.', 'ble drept av løven')">Snik opp og drep løven</button>
-      `;
-    } else if (scoreboard.gikkStille == false) {
-      innerOutput.innerHTML = `
-        <button class="btn btn-block btn-light" onclick="pathOne10()">Snik deg bort fra løven</button>
-      `;
-    }
   } else if (key == 'gikkStille' && val == 'false') {
     scoreboard.update('Du rabler ivei opp utgangen', '1');
     endGame('Du går opp igjennom åpningen. Når du kommer opp sitter en løve og sover. Løven våkner, og begynner å jage deg. Du blir overrasket og faller baklengs nedover huleåpningen. ' + scoreboard.name + ' faller ned til sin død.');
   }
+  var innerOutput = document.body.querySelector('#innerOutput');
+  if (scoreboard.gikkStille == true) {
+    innerOutput.innerHTML = `
+      <button class="btn btn-block btn-light" onclick="pathOne10()">Snik deg bort fra løven</button>
+    `;
+  } else if (scoreboard.hasStav == true) {
+    output.innerHTML = `
+      <p>Du stikker opp hodet sakte igjennom åpningen, og ser deg om. Rundt 10 meter unna ligger en løve og sover. Hva gjør du?</p>
+      <button class="btn btn-block btn-light" onclick="pathOne9()">Snik deg opp og drep løven</button>
+    `;
+  } 
 }
 
 function endGame(reason) {
@@ -204,6 +205,7 @@ function endGame(reason) {
     <button type="button" class="btn btn-block btn-warning" onclick="startGame('Som du sikkert vet...  ')">Ja!</button>
   `
 }
+
 function endGameReason(type, text, scoreboardText) {
   if(type == 'win') {
     scoreboard.update(`Du ${scoreboardText}, og vinner derfor denne runden.`);
@@ -213,6 +215,7 @@ function endGameReason(type, text, scoreboardText) {
       <button type="button" class="btn btn-block btn-warning" onclick="startGame('Greier du det i gjen? ')">Rematch</button>
     `;
   }
+  
   if(type == 'loss') {
     scoreboard.update(`Du blir ${scoreboardText}, og taper derfor denne runden.`);
     output.innerHTML = `
@@ -222,5 +225,4 @@ function endGameReason(type, text, scoreboardText) {
       <button type="button" class="btn btn-block btn-warning" onclick="startGame('Som du sikkert vet...  ')">Ja!</button>
     `
   }
-
 }
