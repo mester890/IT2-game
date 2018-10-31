@@ -1,17 +1,24 @@
+//T: Definerer variabelnavn for enkelte elementer på siden. Disse brukes flittig
+//videre utover koden, for enklere aksess.
 const output = document.body.querySelector('#output');
 const scoreboard_output = document.body.querySelector('#scoreboard');
+
+//T: Tar ibruk Scoreboard-funksjonen og lager en ny instans av dette. gir et passende navn.
 var scoreboard = new Scoreboard();
 
+//T: Definerer hva et Scoreboard er i denne funksjonen. Ikke noe i veien for å lage flere scoreboards.
 function Scoreboard() {
   this.name = "";
   this.stages = [];
   this.hasStav = false;
   this.gikkStille = false;
 
+  //T: Funksjon i scoreboard.
   this.setTitle = function(src_name) {
     this.name = src_name;
   }
 
+  //T: Funksjon for å legge til "fullførte steg i spillet. Lagres i scoreboard."
   this.update = function(stage, status) {
     var stg = {stage, status}
     this.stages.push(stg);
@@ -25,6 +32,7 @@ function Scoreboard() {
     }
   }
 
+  //T: nullstillingsfunksjon i scoreboard.
   this.nullstill = function() {
     while(this.stages.length > 0) {
         this.stages.pop();
@@ -32,8 +40,13 @@ function Scoreboard() {
   }
 }
 
+/** Thomas
+ * Nullstiller scoreboard og legger til første steg i viewet. 
+ * Om det er sendt med en parameter til denne funksjonen, legges det til før teksten i viewet.
+ */
 function startGame(pre_text) {
   scoreboard.nullstill();
+  document.body.style.background = 'linear-gradient:(40deg, #ffffff, #000000)';
   text = "";
   if(pre_text) {
     text = pre_text;
@@ -47,6 +60,7 @@ function startGame(pre_text) {
   `;
 }
 
+//T: Første stage. bruker en parameter, yes eller no. Bruker if for å velge hva som skal vises i viewet.
 function stageOne(choice) {
   if(choice == 'yes') {
     output.innerHTML = `
@@ -60,6 +74,7 @@ function stageOne(choice) {
     </form>
     `;
     document.getElementById("player_name_btn").addEventListener("click", function(event){
+      //T: event.preventDefault gjør det slik at vinduet ikke refresher, som er standardhandling når det kommer til nettlesere og forms.
       event.preventDefault()
       setScoreboardTitle(player_naming.player_name.value);
     });
@@ -69,9 +84,12 @@ function stageOne(choice) {
 
 }
 
+//T: Funksjon for å oppdatere tittelen på scoreboardet. 
 function setScoreboardTitle(title) {
+  //T: tar ibruk internfunksjonene på scoreboard.
   scoreboard.setTitle(title);
   scoreboard.update('Valgt navn', '1');
+  //T: sender deg til neste view.
   stageTwo()
 }
 
