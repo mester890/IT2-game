@@ -1,3 +1,5 @@
+## Logikken bak koden. Merk at noen av valgene er blitt forenklet eller fjernet.
+
 # IT2-game
 # Situasjonsmal
   *  [ ] alt1 -> effekt1
